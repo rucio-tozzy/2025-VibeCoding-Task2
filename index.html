@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Frontend Developer 個人品牌網站 [phase1]</title>
+  <title>Frontend Developer 個人品牌網站</title>
   <meta name="description" content="這是一個前端工程師的個人品牌網站，包含自我介紹、技能、作品集與聯絡方式，協助訪客快速了解開發者的背景與專業能力。">
 
   <style>
@@ -108,19 +108,27 @@
        ========================================================================== */
     /* CSS:HERO-START */
     .section-hero {
-      text-align: left;
-      padding-top: 6rem;
       background-color: #0f1520;
+      padding-top: 6rem;
+    }
+
+    .hero-content {
+      margin-bottom: 2rem;
     }
 
     .hero-title {
-      font-size: 2rem;
+      font-size: 2.2rem;
       margin-bottom: 1rem;
       color: #d4e9ff;
       font-weight: 700;
     }
 
-    .hero-image-wrapper {
+    .hero-text {
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    .hero-photo {
       margin-top: 1.5rem;
     }
     /* CSS:HERO-END */
@@ -214,18 +222,24 @@
        ========================================================================== */
     /* CSS:RWD-START */
     @media (min-width: 768px) {
-      .hero-title {
-        font-size: 2.6rem;
-      }
-
+      /* Hero：平板以上 → 左圖右文 */
       .section-hero .container {
         display: flex;
-        flex-direction: row;
+        flex-direction: row-reverse;
         align-items: center;
         gap: 2rem;
       }
 
-      /* About 區兩欄排版（手機單欄 → 平板以上雙欄） */
+      .hero-photo {
+        margin-top: 0;
+        flex: 1;
+      }
+
+      .hero-content {
+        flex: 1;
+      }
+
+      /* About 區仍保留兩欄排版 */
       .section-about .container {
         display: flex;
         flex-direction: row;
@@ -244,9 +258,7 @@
 <body>
   <div class="page">
 
-    <!-- ===========================================================
-         Header / Navigation
-         =========================================================== -->
+    <!-- Header -->
     <header class="site-header">
       <div class="container nav">
         <div class="nav-left">Your Name · Frontend Dev</div>
@@ -263,20 +275,25 @@
     <main>
 
       <!-- ===========================================================
-           SECTION SLOT: HERO
+           SECTION SLOT: HERO（已更新）
            =========================================================== -->
       <!-- SECTION:HERO-START -->
       <section id="hero" class="section section-hero">
         <div class="container">
-          <div>
-            <h1 class="hero-title">這裡是 Hero 主視覺區（占位內容）</h1>
-            <p>這裡是 Hero 區的暫時佔位，未來會放上個人一句話介紹、職稱與行動呼籲，例如「前端工程師、介面開發、作品展示」。</p>
-            <p>之後會用 Section SDD 的 Prompt 產生正式文案與版面，請把新的 section 程式碼整段貼在這兩個註解中間，完全取代本區內容。</p>
+          
+          <div class="hero-content">
+            <h1 class="hero-title">Hi, I'm Your Name</h1>
+            <p class="hero-text">前端工程師、介面開發、作品展示。擅長現代前端技術與視覺互動，專注打造易用、清晰又具備良好維護性的使用者介面。</p>
+            <p class="hero-text">做事風格重視溝通、喜歡教學，也擅長將複雜流程整理成易懂的邏輯，讓合作更順暢、產品更易維護。</p>
           </div>
-          <div class="hero-image-wrapper">
-            <img src="https://source.unsplash.com/800x600/?developer,laptop"
-                 alt="前端工程師在筆電前工作的示意圖" loading="lazy">
+
+          <div class="hero-photo">
+            <img
+              src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
+              alt="工程師在螢幕前撰寫程式碼的示意照片"
+              loading="lazy">
           </div>
+
         </div>
       </section>
       <!-- SECTION:HERO-END -->
@@ -285,7 +302,6 @@
       <!-- ===========================================================
            SECTION SLOT: ABOUT（已更新）
            =========================================================== -->
-      <!-- SECTION:ABOUT-START -->
       <section id="about" class="section section-about" aria-labelledby="about-heading">
         <div class="container">
           
@@ -317,7 +333,6 @@
 
         </div>
       </section>
-      <!-- SECTION:ABOUT-END -->
 
 
       <!-- ===========================================================
@@ -369,9 +384,7 @@
 
     </main>
 
-    <!-- ===========================================================
-         Footer
-         =========================================================== -->
+    <!-- Footer -->
     <footer class="section" style="text-align:center; padding:2rem 0; font-size:0.9rem; color:#9aa7b8;">
       © 2025 Frontend Developer 個人品牌網站. All rights reserved.
     </footer>
